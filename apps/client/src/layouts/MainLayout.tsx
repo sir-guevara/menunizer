@@ -27,9 +27,9 @@ const MainLayout = function ({ children }){
     <>
         <Navbar bg="light" variant="light" className="mb-4">
           <Container>
-            <Navbar.Brand href="/">Menunizer</Navbar.Brand>
+            <Navbar.Brand href="/"><img src="/logo.png" alt="menunizer"  className="logo"/></Navbar.Brand>
 
-            <Nav className="flex-grow-1  justify-content-end">
+            <Nav>
                 <Nav.Link onClick={goToPlaces}>Places</Nav.Link>
             </Nav>
 

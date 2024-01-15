@@ -1,0 +1,326 @@
+@media all and (max-width:1199px){
+	 h1 {
+		line-height: 55px;
+		font-size: 52px;
+	}
+	.form_item ul li a {
+		font-size: 14px;
+	}
+
+
+}
+@media all and (min-width:992px){
+	.header__menu ul{
+		display: -webkit-box !important;
+		display: -ms-flexbox !important;
+		display: flex !important;
+	}
+}
+@media all and (max-width:991px){
+	.singup {
+		display: none;
+	}
+	.mobile_menu {
+	  display: block;
+	}
+	.header__menu ul {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		z-index: 9999;
+		top: 80px;
+		left: 0px;
+		background: #909090;
+		padding: 20px 0 15px;
+		display: none;
+	}
+	.header__menu ul li a {
+		margin-right: inherit;
+		padding: 3px 0;
+	}
+	.banner__content_area {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+	}
+	.need__main_content_right,
+	.idea__main_content_right,
+	.banner__content_right {
+		-webkit-box-ordinal-group: 0;
+		    -ms-flex-order: -1;
+		        order: -1;
+		margin-bottom: 50px;
+	}
+	.use__main_content,
+	.free_trial__main_content,
+	.need__main_content,
+	.scan__main_content, 
+	.idea__main_content {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+	}
+	.need__main_content_right img {
+		max-width: inherit;
+	}
+	.free_trial__content_left img,
+	.banner__content_right img,
+	.idea__main_content_right img {
+		max-width: 500px;
+	}
+	.need__main_content_right {
+		padding-left:inherit;
+	}
+	.free_trial__content_right{
+		padding-bottom:100px;
+	}
+	.use__main_content_left h1 {
+		padding-top: inherit;
+		padding-bottom: 50px;
+	}
+	.footer__copyrigt_menu ul {
+		padding-left: 100px;
+	}
+	.free_trial__content_left,
+	.free_trial__content_right {
+		width: 100%;
+	}
+
+}
+@media all and (max-width:767px){
+	h1 {
+		font-size: 45px;
+		line-height:55px;
+	}
+	h2 {
+		font-size: 45px;
+		line-height: 55px;
+	}
+	h3 {
+		font-size: 40px;
+		line-height: 50px;
+	}
+	.free_trial__content_left img, 
+	.banner__content_right img, 
+	.idea__main_content_right img {
+		max-width: 400px;
+	}
+	.banner__content_left p {
+		padding: 50px 0 50px 0;
+	}
+	.btn_style_3{
+		font-size:26px;
+	}
+	.footer__copyrigt_menu {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+		-webkit-box-align: center;
+		    -ms-flex-align: center;
+		            -ms-grid-row-align: center;
+		        align-items: center;
+	}
+	.footer__copyrigt_menu ul {
+		padding-left: inherit;
+		-webkit-box-ordinal-group: 0;
+		    -ms-flex-order: -1;
+		        order: -1;
+		padding:10px 0;
+	}
+	.footer__social_link ul {
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		padding-bottom: inherit;
+	}
+	.monthly__paid {
+		padding: 30px 25px 40px 60px;
+	}
+
+}
+@media all and (max-width:575px){
+	.header__logo a {
+		font-size: 25px;
+	}
+	.all_p_humber span {
+		width: 25px;
+	}
+	h2 {
+		font-size: 35px;
+		line-height: 40px;
+	}
+	.banner__content_left p{
+		padding:25px 0;
+	}
+	.btn_style_1 {
+		padding: 12px 25px;
+		font-size: 15px;
+	}
+	.free_trial__content_left img, 
+	.banner__content_right img, 
+	.idea__main_content_right img {
+		max-width: 300px;
+	}
+	.ptb_1 {
+		padding: 160px 0 65px 0;
+	}
+	.need__main_content_right, 
+	.idea__main_content_right, 
+	.banner__content_right {
+		-webkit-box-ordinal-group: 0;
+		    -ms-flex-order: -1;
+		        order: -1;
+		margin-bottom: 30px;
+	}
+	p {
+		font-size: 16px;
+		line-height: 25px;
+	}
+	.idea__main_content_left p {
+		padding-top: 20px;
+	}
+	h1 {
+		font-size: 22px;
+		line-height: 31px;
+	}
+	h3 {
+		font-size: 23px;
+		line-height: 30px;
+	}
+	.scan__main_content_right h2 {
+		color: #ED6F3B;
+	}
+	h2 {
+		font-size: 23px;
+		line-height: 30px;
+	}
+	.accordion-item button {
+		font-size: 16px !important;
+	}
+	.scan_code a img {
+		max-width: 80px;
+	}
+	.scan_code a p {
+		padding: 12px 0 15px 0;
+		font-size: 18px;
+		line-height: 22px;
+	}
+	.free_trial__content_right p {
+		padding: 10px 0;
+		font-size: 18px;
+		line-height: 35px;
+	}
+	.btn_style_3 {
+		font-size: 16px;
+		padding: 10px 25px;
+		line-height: 29px;
+	}
+	.footer__social_link ul li i{
+		font-size: 25px;
+	}
+	.scan__main_content_right p {
+		font-size: 16px;
+		line-height: 25px;
+	}
+	.qr_code span {
+		font-size: 18px;
+	}
+	.scan_code a {
+		padding: 30px 30px 10px 30px;
+	}
+	.btn_style_2 {
+		padding: 8px 25px;
+		font-size: 15px;
+	}
+	.try_for_free {
+		-webkit-box-pack: start;
+		    -ms-flex-pack: start;
+		        justify-content: flex-start;
+		padding: 60px 0px 0 0;
+	}
+	.footer__copyrigt_menu p {
+		font-size: 17px;
+	}
+	.footer__copyrigt_menu ul li a {
+		font-size: 16px;
+	}
+	.accordion-button:after {
+		width: 1.5rem;
+		height: 1.5rem;
+		background-size: 1.5rem;
+	}
+	.accordion-item button span {
+		top: -4px;
+	}
+	.use__main_content_right ul li{
+		-webkit-box-flex:0;
+		    -ms-flex:0 0 100%;
+		        flex:0 0 100%
+	}
+	.use__main_content_right ul li span {
+		font-size: 15px;
+		line-height: 18px;
+	}
+	.pricing__tab_content ul li {
+		font-size: 16px;
+		padding: 8px 12px;
+		line-height: 20px;
+	}
+	.monthly__paid h2 {
+		font-size: 32px;
+	}
+	.paid__annually, .paid__monthly {
+		padding: 30px 30px 30px 50px;
+	}
+	.get_started{
+	  text-align: center;
+	}
+	.btn_style_4 {
+		padding: 14px 30px;
+		font-size: 16px;
+		line-height: 22px;
+	}
+	h4 {
+		font-size: 35px;
+	}
+	.monthly__paid ul li span {
+		font-size: 14px;
+	}
+	.form_item ul {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+	}
+	h5 {
+		font-size: 30px;
+		line-height: 33px;
+	}
+	.registration__head p {
+		font-size: 15px;
+	}
+	.form_item input {
+		font-size: 16px;
+		padding: 11px 20px;
+	}
+	.form_item {
+		padding-bottom: 10px;
+	}
+	.form_item button {
+		font-size: 18px;
+		padding: 18px 0;
+	}
+	.form_item label {
+		font-size: 14px;
+	}
+}
+@media all and (max-width:450px){
+
+}

@@ -19,7 +19,7 @@ body{
     font-size: 0.875rem !important;
 }
 .text-primary{
-    color: #ff3366 !important;
+    color: #fc285d !important;
 }
 .text-gray {
     --tw-text-opacity: 1;
@@ -61,4 +61,11 @@ h1, h2, h3, h4, h5, h6 {
     }
     #logout:hover{
         background-color:#fc285d;
+    }
+    .link{
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .logo{
+        height: 30px;
     }

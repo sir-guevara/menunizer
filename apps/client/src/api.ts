@@ -4,7 +4,7 @@ import {  DataToken, IdDataToken, IdToken, Login, Token } from "./types";
 async function request(path: string, { data, token, method = "GET" }: { data?: unknown, token?: string | null, method?: string }): Promise<unknown> {
   const url = '/api' + path;
   const headers: Record<string, string> = {
-    Authorization: token ? `Token ${token}` : "",
+    Authorization: token ? `Bearer ${token}` : "",
     "Content-Type": "application/json",
   };
 
@@ -53,19 +53,19 @@ export function register(signup:Login) {
 }
 
 export function fetchPlaces(token:Token) {
-  return request("/api/places/", { token});
+  return request("/places/", { token});
 }
 
 export function addPlace(place:DataToken) {
-  return request("/api/places/", { ...place, method: "POST" });
+  return request("/places/", { ...place, method: "POST" });
 }
 
 export function uploadImage(image:Blob|string) {
   const formData = new FormData();
   formData.append("file", image);
-  formData.append("upload_preset", "qr_menu");
+  formData.append("upload_preset", "menunizer");
 
-  return fetch("https://api.cloudinary.com/v1_1/dtde3o5xe/image/upload", {
+  return fetch("https://api.cloudinary.com/v1_1/awsomegroove/image/upload", {
     method: "POST",
     body: formData,
   }).then((response) => {
@@ -74,40 +74,40 @@ export function uploadImage(image:Blob|string) {
 }
 
 export function fetchPlace(place:IdToken) {
-  return request(`/api/places/${place.id}`, { token:place.token });
+  return request(`/places/${place.id}`, { token:place.token });
 }
 
 export function addCategory(cat:DataToken) {
-  return request("/api/categories/", { ...cat, method: "POST" });
+  return request("/categories/", { ...cat, method: "POST" });
 }
 
 export function addMenuItems(item:DataToken) {
-  return request("/api/menu_items/", {...item, method: "POST" });
+  return request("/menu_items/", {...item, method: "POST" });
 }
 
 export function updateMenuItem(item:IdDataToken) {
 
-  return request(`/api/menu_items/${item.id}`, { data:item.data, token:item.token, method: "PATCH" });
+  return request(`/menu_items/${item.id}`, { data:item.data, token:item.token, method: "PATCH" });
 }
 
 export function removePlace(place:IdToken) {
-  return request(`/api/places/${place.id}`, { token:place.token, method: "DELETE" });
+  return request(`/places/${place.id}`, { token:place.token, method: "DELETE" });
 }
 
 export function removeCategory(cat:IdToken) {
-  return request(`/api/categories/${cat.id}`, { token:cat.token, method: "DELETE" });
+  return request(`/categories/${cat.id}`, { token:cat.token, method: "DELETE" });
 }
 
 export function removeMenuItem(item:IdToken) {
-  return request(`/api/menu_items/${item.id}`, { token:item.token, method: "DELETE" });
+  return request(`/menu_items/${item.id}`, { token:item.token, method: "DELETE" });
 }
 
 export function updatePlace(place:IdDataToken) {
-  return request(`/api/places/${place.id}`, { data:place.data, token:place.token, method: "PATCH" });
+  return request(`/places/${place.id}`, { data:place.data, token:place.token, method: "PATCH" });
 }
 
 export function createPaymentIntent(payment:DataToken) {
-  return request("/api/create_payment_intent/", {
+  return request("/create_payment_intent/", {
     data:payment.data,
     token:payment.token,
     method: "POST",
