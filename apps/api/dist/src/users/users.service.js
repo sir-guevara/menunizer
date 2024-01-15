@@ -19,6 +19,12 @@ let UsersService = class UsersService {
         this.prisma = prisma;
     }
     async create(createUserDto) {
+        const user = await this.prisma.user.findUnique({
+            where: { username: createUserDto.username },
+        });
+        if (user) {
+            throw new common_1.HttpException('User already exists', common_1.HttpStatus.BAD_REQUEST);
+        }
         const hashedPassword = await bcrypt.hash(createUserDto.password, exports.roundsOfHashing);
         createUserDto.password = hashedPassword;
         return this.prisma.user.create({

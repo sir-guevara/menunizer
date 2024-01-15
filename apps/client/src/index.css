@@ -7,17 +7,58 @@ body{
 }
 
 .btn-standard{
+    font-weight:700 !important;
+
     background-color: #ff3366 !important;
     color: white !important;
 }
+.font-md{
+    font-weight:600 !important;
+}
+.text-md{
+    font-size: 0.875rem !important;
+}
+.text-primary{
+    color: #ff3366 !important;
+}
+.text-gray {
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity));
+    }
 
 .btn-standard:hover{
     background-color: #fc285d !important;
     
 }
-h3{
-    font-weight: 600;
+h1, h2,h3{
+    font-size: 1.875rem;
+    line-height: 2.25rem;   
+    font-weight: 700;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 5px;}
+
+    #nav-btn a{
+        color: #fc285d;
+        font-weight: 600;
+        border-radius: 7px;
+        /* padding: 10px 20px; */
+        margin-left: 3px;
+        margin-left: 3px;
+    }
+    #logout{
+        background-color: #fc285d;
+        color: white !important;
+    }
+    #logout:hover{
+        background-color:black;
+    }
+
+    #login{
+        background-color: black;
+        color: white !important;
+    }
+    #logout:hover{
+        background-color:#fc285d;
+    }

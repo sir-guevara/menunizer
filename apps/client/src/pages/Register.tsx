@@ -1,10 +1,11 @@
 import MainLayout from "../layouts/MainLayout"
 import {Button,Form,Row,Col, Card, Spinner} from 'react-bootstrap'
 import { useContext, useState, useEffect } from "react"
+import { toast } from "react-toastify"
 import { Link, useNavigate } from "react-router-dom"
 import AuthContext from "../context/AuthContext"
 
-const Login  = () =>{
+const Register  = () =>{
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
     const navigateTo = useNavigate();
@@ -17,21 +18,21 @@ const Login  = () =>{
     })
 
     const onClick = async () =>{
-        auth.signIn({username,password},()=> navigateTo('/places'));
+        auth.register({username,password},()=> (auth.signIn({username,password}, ()=> navigateTo('/places'))));
     }
     return (
         <MainLayout>
-            <Row className="justify-content-center"> 
+            <Row className="justify-content-center min-h-80"> 
                 <Col lg={6} md={8}>
                     <Card>
-                        <Card.Header>
-                                <h3 className="text-center">LOGIN</h3>
-                        </Card.Header>
+                                <h3 className="text-center text-primary mt-4">Sing Up</h3>
+                                <p className="text-gray text-center">Create your account to get started.</p>
+                
                         <Card.Body>
                             
                             <Form>
                                 <Form.Group>
-                                    <Form.Label>Email address</Form.Label>
+                                    <Form.Label className="text-primary font-md  text-md">Email</Form.Label>
                                     <Form.Control 
                                         type="email" 
                                         placeholder="Enter email" 
@@ -40,22 +41,22 @@ const Login  = () =>{
                                    
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label>Password</Form.Label>
+                                    <Form.Label className="text-primary font-md  text-md">Password</Form.Label>
                                     <Form.Control type="password" name="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value)} />
                                 </Form.Group>
-                                <Button variant="standard" className="my-4"  block onClick={onClick} disabled={auth.loading}>
+                                <Button variant="standard"  className="my-4" block onClick={onClick} disabled={auth.loading}>
                                     {
                                     auth.loading?
                                         <Spinner animation="border" role="status" variant="standard" as="span" size="sm" aria-hidden="true" />
-                                    :"Sign in"
+                                    :"Sign up"
                                     }
                                 </Button>
                             </Form>
                             <div className="text-center">
                             <p className="text-gray">
-                                Don't have an account?
-                                <Link className="underline text-primary" to="/register">{" "}
-                                Sign up
+                                Already have an account?
+                                <Link className="underline text-primary" to="/login">{" "}
+                                Log in
                                 </Link>
                             </p>
                             </div>
@@ -69,4 +70,4 @@ const Login  = () =>{
 
 
 
-export default Login
+export default Register;

@@ -1,12 +1,54 @@
 import { createContext, useState } from "react";
-
+import { signIn as singInApi, register as registerApi  } from "../api";
 
 const AuthContext = createContext();
 
+interface SignInResponse {
+    accessToken?: string; // Adjust the type according to your actual response structure
+  }
+
 export function AuthProvider({ children }) {
-    const [token, setToken] = useState("");
+    const [token, setToken] = useState(localStorage.getItem('token'));
+    const [loading,setLoading] = useState(false);
+
+    const signIn = async  ({ username, password }: { username: string; password: string },
+    callback=()=>"" ): Promise<void>=>{
+        setLoading(true);
+        const response = await singInApi({username,password}) as SignInResponse;
+
+        if(response && response.accessToken){
+            localStorage.setItem("token",response.accessToken);
+            setToken(response.accessToken);
+            callback()
+
+        }
+        setLoading(false);
+    }
+
+    const signOut = ()=>{
+        localStorage.removeItem("token");
+        setToken("");
+    }
+
+    const register = async ({username,password}: { username: string; password: string },callback)=>{
+        setLoading(true);
+        const response = await registerApi({username,password});
+        if(response && response.id){
+            console.log("response  :  ",response);
+            callback()
+        }
+        setLoading(false);
+
+    }
+
+
+
     const value = {
-        token
+        token,
+        loading,
+        signIn,
+        signOut,
+        register
     };
     
     return (

@@ -25,7 +25,7 @@ export class AuthService {
     // If no user is found, throw an error
     if (!user) {
       throw new HttpException(
-        'email or password incorrect',
+        'Invalid email or password',
         HttpStatus.NOT_FOUND,
       );
     }
@@ -35,7 +35,7 @@ export class AuthService {
 
     // If password does not match, throw an error
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Invalid password');
+      throw new UnauthorizedException('Invalid email or password');
     }
 
     // Step 3: Generate a JWT containing the user's ID and return it

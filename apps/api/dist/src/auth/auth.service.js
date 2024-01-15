@@ -24,11 +24,11 @@ let AuthService = class AuthService {
             where: { username: username },
         });
         if (!user) {
-            throw new common_1.HttpException('email or password incorrect', common_1.HttpStatus.NOT_FOUND);
+            throw new common_1.HttpException('Invalid email or password', common_1.HttpStatus.NOT_FOUND);
         }
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
-            throw new common_1.UnauthorizedException('Invalid password');
+            throw new common_1.UnauthorizedException('Invalid email or password');
         }
         return {
             accessToken: this.jwtService.sign({
