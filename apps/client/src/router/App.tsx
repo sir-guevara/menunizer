@@ -1,17 +1,24 @@
-import {BrowserRouter, Switch,  Route} from  'react-router-dom'
+import {Route, Routes } from 'react-router-dom';
+
 import Home from "../pages/Home";
 import Login from "../pages/Login";
-
+import { ToastContainer } from 'react-toastify';
+import Places from '../pages/Places';
+import { AuthProvider } from '../context/AuthContext';
+import PrivateRoute from './PrivateRoute';
 
 
 function App(){ 
     return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/login" component={Login}/>
-            </Switch>
-        </BrowserRouter>
+        <AuthProvider>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/places" element={<PrivateRoute Component={Places}/>} />
+                
+            </Routes>
+            <ToastContainer />
+        </AuthProvider>
     )
 }
 export default App

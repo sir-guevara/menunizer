@@ -1,6 +1,12 @@
-import MainLayout from "../layouts/mainlayout"
+import MainLayout from "../layouts/MainLayout"
 
-const Home  = () => <MainLayout>Home</MainLayout>
+const Home  = () =>{
+    return(
+        <MainLayout>
+            <h1>Home</h1>
+        </MainLayout>
+    )
+}
 
 
 export default Home
