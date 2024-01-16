@@ -78,7 +78,7 @@ export function fetchPlace(place:IdToken) {
 }
 
 export function addCategory(cat:DataToken) {
-  return request("/categories/", { ...cat, method: "POST" });
+  return request(`/places/${cat.id}/categories/`, { ...cat, method: "POST" });
 }
 
 export function addMenuItems(item:DataToken) {
@@ -94,8 +94,8 @@ export function removePlace(place:IdToken) {
   return request(`/places/${place.id}`, { token:place.token, method: "DELETE" });
 }
 
-export function removeCategory(cat:IdToken) {
-  return request(`/categories/${cat.id}`, { token:cat.token, method: "DELETE" });
+export function removeCategory(cat:IdToken,placeId:string) {
+  return request(`/places/${placeId}/categories/${cat.id}`, { token:cat.token, method: "DELETE" });
 }
 
 export function removeMenuItem(item:IdToken) {

@@ -7,6 +7,7 @@ import { AuthProvider } from '../context/AuthContext';
 import PrivateRoute from './PrivateRoute';
 import Register from '../pages/Register';
 import IndexPage from '../pages/IndexPage';
+import Place from '../pages/Place';
 
 
 function App(){ 
@@ -17,6 +18,7 @@ function App(){
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/places" element={<PrivateRoute Component={Places}/>} />
+                <Route path="/places/:id" element={<PrivateRoute Component={Place}/>} />
                 
             </Routes>
             <ToastContainer />

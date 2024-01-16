@@ -5,6 +5,7 @@ import AuthContext from "../context/AuthContext";
 import { fetchPlaces } from "../api";
 import { Col, Modal, Row } from "react-bootstrap";
 import PlaceForm from "../containers/PlaceForm";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -48,6 +49,7 @@ const AddPlaceButton = styled.div`
 const Places = () => {
     const [places, setPlaces] = useState([]);
     const [show, setShow] = useState(false)
+    const navigate = useNavigate();
 
 
     const auth = useContext(AuthContext)
@@ -66,6 +68,9 @@ const Places = () => {
 
         }
     }
+
+    const goToPlace = (id:string) => navigate(`/places/${id}/`);
+
     const onDone =()=>{
         onFetchPlaces();
         onHide();
@@ -82,7 +87,7 @@ const Places = () => {
             {
             places.map((place) => (
                 <Col key={place.id} lg={4}>
-                    <Place>
+                    <Place onClick={()=>goToPlace(place.id)}>
                         <div style={{backgroundImage:`url(${place.image})`}}></div>
                         <p>{place.name}</p>
                     </Place>
