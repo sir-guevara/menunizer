@@ -18,7 +18,6 @@ export class OwnerMiddleware implements NestMiddleware {
       const plc = await this.prisma.place.findUnique({
         where: { id: id },
       });
-
       if (!plc) {
         throw new HttpException('Unauthorized', HttpStatus.NOT_FOUND);
       }

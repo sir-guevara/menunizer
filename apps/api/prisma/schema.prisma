@@ -34,17 +34,17 @@ model Place {
 model Category {
   id      String     @id @unique @default(cuid())
   name    String
-  place   Place      @relation(fields: [placeId], references: [id])
+  place   Place      @relation(fields: [placeId], references: [id], onDelete: Cascade)
   placeId String
   items   MenuItem[]
 }
 
 model MenuItem {
-  id          String   @id @unique @default(cuid())
+  id          String   @id @unique @default(cuid()) 
   name        String
   image       String // Assuming image is a URL or file path
   price       Float @default(0.0)
-  category    Category @relation(fields: [categoryId], references: [id])
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId  String
   description String?
   isAvailable Boolean @default(false)
