@@ -26,8 +26,7 @@ __decorate([
 ], CreateItemDto.prototype, "description", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsNumber)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], CreateItemDto.prototype, "price", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),

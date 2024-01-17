@@ -15,7 +15,6 @@ export class OwnerMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
     try {
       const id = req.params.placeId;
-
       const plc = await this.prisma.place.findUnique({
         where: { id: id },
       });
@@ -24,6 +23,7 @@ export class OwnerMiddleware implements NestMiddleware {
         throw new HttpException('Unauthorized', HttpStatus.NOT_FOUND);
       }
       req['place'] = plc;
+
       return next();
     } catch (error) {
       return res.status(500).json({ error: 'Error fetching place' });

@@ -9,16 +9,36 @@ export declare class CategoryController {
         name: string;
         placeId: string;
     }>;
-    findAll(placeId: string): Promise<{
+    findAll(placeId: string): Promise<({
+        items: {
+            id: string;
+            name: string;
+            image: string;
+            price: number;
+            categoryId: string;
+            description: string;
+            isAvailable: boolean;
+        }[];
+    } & {
         id: string;
         name: string;
         placeId: string;
-    }[]>;
-    findOne(id: string, request: any): Promise<{
+    })[]>;
+    findOne(id: string, request: any): Promise<({
+        items: {
+            id: string;
+            name: string;
+            image: string;
+            price: number;
+            categoryId: string;
+            description: string;
+            isAvailable: boolean;
+        }[];
+    } & {
         id: string;
         name: string;
         placeId: string;
-    }[]>;
+    })[]>;
     update(id: string, updateCategoryDto: UpdateCategoryDto, request: any): Promise<{
         id: string;
         name: string;

@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const item_service_1 = require("./item.service");
 const create_item_dto_1 = require("./dto/create-item.dto");
 const update_item_dto_1 = require("./dto/update-item.dto");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let ItemController = class ItemController {
     constructor(itemService) {
         this.itemService = itemService;
@@ -24,17 +25,17 @@ let ItemController = class ItemController {
     create(createItemDto) {
         return this.itemService.create(createItemDto);
     }
-    findAll() {
-        return this.itemService.findAll();
+    findAll(placeId) {
+        return this.itemService.findAll(placeId);
     }
     findOne(id) {
-        return this.itemService.findOne(+id);
+        return this.itemService.findOne(id);
     }
     update(id, updateItemDto) {
-        return this.itemService.update(+id, updateItemDto);
+        return this.itemService.update(id, updateItemDto);
     }
     remove(id) {
-        return this.itemService.remove(+id);
+        return this.itemService.remove(id);
     }
 };
 exports.ItemController = ItemController;
@@ -47,8 +48,9 @@ __decorate([
 ], ItemController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Param)('placeId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ItemController.prototype, "findAll", null);
 __decorate([
@@ -74,7 +76,8 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ItemController.prototype, "remove", null);
 exports.ItemController = ItemController = __decorate([
-    (0, common_1.Controller)('/places/:placeId/categories/:catId/items'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Controller)('/places/:placeId/categories/menu-items'),
     __metadata("design:paramtypes", [item_service_1.ItemService])
 ], ItemController);
 //# sourceMappingURL=item.controller.js.map

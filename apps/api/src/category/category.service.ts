@@ -13,11 +13,21 @@ export class CategoryService {
   }
 
   async findAll(id: string) {
-    return await this.prisma.category.findMany({ where: { placeId: id } });
+    return await this.prisma.category.findMany({
+      where: { placeId: id },
+      include: {
+        items: true,
+      },
+    });
   }
 
   async findOne(id: string) {
-    return await this.prisma.category.findMany({ where: { id: id } });
+    return await this.prisma.category.findMany({
+      where: { id: id },
+      include: {
+        items: true,
+      },
+    });
   }
 
   async update(id: string, _updateCategoryDto: UpdateCategoryDto) {

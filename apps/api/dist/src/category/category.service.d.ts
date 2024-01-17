@@ -9,16 +9,36 @@ export declare class CategoryService {
         name: string;
         placeId: string;
     }>;
-    findAll(id: string): Promise<{
+    findAll(id: string): Promise<({
+        items: {
+            id: string;
+            name: string;
+            image: string;
+            price: number;
+            categoryId: string;
+            description: string;
+            isAvailable: boolean;
+        }[];
+    } & {
         id: string;
         name: string;
         placeId: string;
-    }[]>;
-    findOne(id: string): Promise<{
+    })[]>;
+    findOne(id: string): Promise<({
+        items: {
+            id: string;
+            name: string;
+            image: string;
+            price: number;
+            categoryId: string;
+            description: string;
+            isAvailable: boolean;
+        }[];
+    } & {
         id: string;
         name: string;
         placeId: string;
-    }[]>;
+    })[]>;
     update(id: string, _updateCategoryDto: UpdateCategoryDto): Promise<{
         id: string;
         name: string;
