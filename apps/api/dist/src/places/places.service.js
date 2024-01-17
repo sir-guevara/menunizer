@@ -9,49 +9,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserService = void 0;
+exports.PlacesService = void 0;
 const common_1 = require("@nestjs/common");
-const prisma_service_1 = require("./prisma/prisma.service");
-let UserService = class UserService {
+const prisma_service_1 = require("../prisma/prisma.service");
+let PlacesService = class PlacesService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async user(userWhereUniqueInput) {
-        return this.prisma.user.findUnique({
-            where: userWhereUniqueInput,
+    create(_createPlaceDto) {
+        return this.prisma.place.create({
+            data: { ..._createPlaceDto },
         });
     }
-    async users(params) {
-        const { skip, take, cursor, where, orderBy } = params;
-        return this.prisma.user.findMany({
-            skip,
-            take,
-            cursor,
-            where,
-            orderBy,
+    findAllByOwner(ownerId) {
+        return this.prisma.place.findMany({ where: { ownerId: ownerId } });
+    }
+    findOne(id) {
+        return this.prisma.place.findUnique({
+            where: { id },
+            include: {
+                categories: {
+                    include: {
+                        items: true,
+                    },
+                },
+            },
         });
     }
-    async createUser(data) {
-        return this.prisma.user.create({
-            data,
+    update(id, _updatePlaceDto) {
+        return this.prisma.place.update({
+            where: { id },
+            data: _updatePlaceDto,
         });
     }
-    async updateUser(params) {
-        const { where, data } = params;
-        return this.prisma.user.update({
-            data,
-            where,
-        });
-    }
-    async deleteUser(where) {
-        return this.prisma.user.delete({
-            where,
-        });
+    remove(id) {
+        return this.prisma.place.delete({ where: { id } });
     }
 };
-exports.UserService = UserService;
-exports.UserService = UserService = __decorate([
+exports.PlacesService = PlacesService;
+exports.PlacesService = PlacesService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], UserService);
-//# sourceMappingURL=user.service.js.map
+], PlacesService);
+//# sourceMappingURL=places.service.js.map
