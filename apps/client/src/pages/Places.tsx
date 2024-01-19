@@ -6,6 +6,7 @@ import { fetchPlaces } from "../api";
 import { Col, Modal, Row } from "react-bootstrap";
 import PlaceForm from "../containers/PlaceForm";
 import { useNavigate } from "react-router-dom";
+import { AuthContextType } from "../types";
 
 
 
@@ -52,7 +53,7 @@ const Places = () => {
     const navigate = useNavigate();
 
 
-    const auth = useContext(AuthContext)
+    const auth = useContext(AuthContext) as AuthContextType;
 
     const onHide = () => setShow(false);
     const onShow = () => setShow(true);
@@ -62,7 +63,7 @@ const Places = () => {
     },[])
 
     const onFetchPlaces = async () => {
-        const json = await fetchPlaces(auth.token)
+        const json = await fetchPlaces(auth.token);
         if(json){
             setPlaces(json)
 
@@ -85,7 +86,7 @@ const Places = () => {
         </Modal>
         <Row>
             {
-            places.map((place) => (
+            places.map((place: any) => (
                 <Col key={place.id} lg={4}>
                     <Place onClick={()=>goToPlace(place.id)}>
                         <div style={{backgroundImage:`url(${place.image})`}}></div>

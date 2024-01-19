@@ -27,6 +27,9 @@ model Place {
   numberOfTables Int        @default(1)
   owner          User       @relation(fields: [ownerId], references: [id])
   categories     Category[]
+  orders          Order[]       
+  font            String?
+  color           String?
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 }
@@ -48,4 +51,18 @@ model MenuItem {
   categoryId  String
   description String?
   isAvailable Boolean @default(false)
+}
+
+
+model Order {
+  id             Int        @id @unique @default(autoincrement())
+  place          Place      @relation(fields: [placeId], references: [id])
+  placeId        String
+  table          Int
+  detail         String
+  paymentIntent  String
+  amount         Float
+  status         String
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
 }

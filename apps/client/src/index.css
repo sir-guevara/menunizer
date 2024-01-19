@@ -1,5 +1,6 @@
 body{
     background-color: #f2f2f2;
+    
 }
 
 * {
@@ -9,7 +10,7 @@ body{
 .btn-standard{
     font-weight:700 !important;
 
-    background-color: #ff3366 !important;
+    background-color: #ED6F3B !important;
     color: white !important;
 }
 .font-md{
@@ -17,9 +18,23 @@ body{
 }
 .text-md{
     font-size: 0.875rem !important;
+    line-height: 1.2rem;
+}
+.text-lg{
+    font-size: 1.125rem!important;
+    line-height: 1.4rem;
+}
+.text-sm{
+    font-size: 0.75rem!important;
+   }
+.fw-sm{
+    font-weight: 400!important;
+}
+text-gray{
+    color: #51585f!important;
 }
 .text-primary{
-    color: #fc285d !important;
+    color: #ED6F3B !important;
 }
 .text-gray {
     --tw-text-opacity: 1;
@@ -31,16 +46,14 @@ body{
     
 }
 h1, h2,h3{
-    font-size: 1.875rem;
-    line-height: 2.25rem;   
     font-weight: 700;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
     margin-top: 5px;}
 
     #nav-btn a{
-        color: #fc285d;
+        color: #ED6F3B;
         font-weight: 600;
         border-radius: 7px;
         /* padding: 10px 20px; */
@@ -48,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
         margin-left: 3px;
     }
     #logout{
-        background-color: #fc285d;
+        background-color: #ED6F3B;
         color: white !important;
     }
     #logout:hover{
@@ -58,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
     #login{
         background-color: black;
         color: white !important;
-    }
+    }  
     #logout:hover{
         background-color:#fc285d;
     }
@@ -68,4 +81,10 @@ h1, h2, h3, h4, h5, h6 {
     }
     .logo{
         height: 30px;
+        width: auto;
     }
+
+
+.boeSgZ {
+    padding: 0 30px;
+}

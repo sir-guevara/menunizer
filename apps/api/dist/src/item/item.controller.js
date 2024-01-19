@@ -35,6 +35,7 @@ let ItemController = class ItemController {
         return this.itemService.update(id, updateItemDto);
     }
     remove(id) {
+        console.log({ id });
         return this.itemService.remove(id);
     }
 };

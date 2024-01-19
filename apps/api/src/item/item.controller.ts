@@ -40,6 +40,7 @@ export class ItemController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
+    console.log({ id });
     return this.itemService.remove(id);
   }
 }

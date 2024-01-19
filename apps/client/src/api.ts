@@ -24,7 +24,8 @@ async function request(path: string, { data, token, method = "GET" }: { data?: u
       toast.error(json.message[0], {type: "error"});
     }
     throw new Error(JSON.stringify(json));
-  } catch (error) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
     if (error instanceof SyntaxError) {
         toast("Server Error", { type: "error" });
       throw new Error(JSON.stringify({"message":"Server Error"}));
@@ -78,16 +79,16 @@ export function fetchPlace(place:IdToken) {
 }
 
 export function addCategory(cat:DataToken) {
-  return request(`/places/${cat.id}/categories/`, { ...cat, method: "POST" });
+  return request(`/places/${cat.id}/categories/`, { data:cat.data, method: "POST", token: cat.token });
 }
 
-export function addMenuItems(item:DataToken) {
-  return request("/menu_items/", {...item, method: "POST" });
+export function addMenuItem(item:DataToken) {
+  return request(`/places/${item.placeId}/categories/menu-items`, {data:item.data, method: "POST" , token: item.token});
 }
 
-export function updateMenuItem(item:IdDataToken) {
+export function updateMenuItem(item:IdDataToken, placeId:string) {
 
-  return request(`/menu_items/${item.id}`, { data:item.data, token:item.token, method: "PATCH" });
+  return request(`/places/${placeId}/categories/menu-items/${item.id}`, { data:item.data, token:item.token, method: "PATCH" });
 }
 
 export function removePlace(place:IdToken) {
@@ -98,8 +99,8 @@ export function removeCategory(cat:IdToken,placeId:string) {
   return request(`/places/${placeId}/categories/${cat.id}`, { token:cat.token, method: "DELETE" });
 }
 
-export function removeMenuItem(item:IdToken) {
-  return request(`/menu_items/${item.id}`, { token:item.token, method: "DELETE" });
+export function removeMenuItem(item:IdToken, placeId:string) {
+  return request(`/places/${placeId}/categories/menu-items/${item.id}`, { token:item.token, method: "DELETE" });
 }
 
 export function updatePlace(place:IdDataToken) {

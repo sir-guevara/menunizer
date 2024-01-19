@@ -40,6 +40,13 @@ let PlacesService = class PlacesService {
         return this.prisma.place.update({
             where: { id },
             data: _updatePlaceDto,
+            include: {
+                categories: {
+                    include: {
+                        items: true,
+                    },
+                },
+            },
         });
     }
     remove(id) {

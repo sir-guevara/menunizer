@@ -10,6 +10,8 @@ export declare class PlacesController {
         ownerId: string;
         image: string;
         numberOfTables: number;
+        font: string;
+        color: string;
         createdAt: Date;
         updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
@@ -19,6 +21,8 @@ export declare class PlacesController {
         ownerId: string;
         image: string;
         numberOfTables: number;
+        font: string;
+        color: string;
         createdAt: Date;
         updatedAt: Date;
     }[]>;
@@ -44,15 +48,35 @@ export declare class PlacesController {
         ownerId: string;
         image: string;
         numberOfTables: number;
+        font: string;
+        color: string;
         createdAt: Date;
         updatedAt: Date;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: string, updatePlaceDto: UpdatePlaceDto): import(".prisma/client").Prisma.Prisma__PlaceClient<{
+        categories: ({
+            items: {
+                id: string;
+                name: string;
+                image: string;
+                price: number;
+                categoryId: string;
+                description: string;
+                isAvailable: boolean;
+            }[];
+        } & {
+            id: string;
+            name: string;
+            placeId: string;
+        })[];
+    } & {
         id: string;
         name: string;
         ownerId: string;
         image: string;
         numberOfTables: number;
+        font: string;
+        color: string;
         createdAt: Date;
         updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
@@ -62,6 +86,8 @@ export declare class PlacesController {
         ownerId: string;
         image: string;
         numberOfTables: number;
+        font: string;
+        color: string;
         createdAt: Date;
         updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;

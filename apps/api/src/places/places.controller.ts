@@ -7,6 +7,7 @@ import {
   Delete,
   Req,
   UseGuards,
+  Patch,
 } from '@nestjs/common';
 import { PlacesService } from './places.service';
 import { CreatePlaceDto } from './dto/create-place.dto';
@@ -35,7 +36,7 @@ export class PlacesController {
     return this.placesService.findOne(id);
   }
 
-  @Post(':id')
+  @Patch(':id')
   update(@Param('id') id: string, @Body() updatePlaceDto: UpdatePlaceDto) {
     return this.placesService.update(id, updatePlaceDto);
   }

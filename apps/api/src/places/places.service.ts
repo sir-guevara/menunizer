@@ -33,6 +33,13 @@ export class PlacesService {
     return this.prisma.place.update({
       where: { id },
       data: _updatePlaceDto,
+      include: {
+        categories: {
+          include: {
+            items: true,
+          },
+        },
+      },
     });
   }
 

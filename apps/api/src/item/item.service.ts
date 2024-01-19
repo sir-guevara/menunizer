@@ -27,6 +27,10 @@ export class ItemService {
   }
 
   async remove(id: string) {
+    const menuItem = await this.prisma.menuItem.findUnique({
+      where: { id },
+    });
+    console.log({ menuItem });
     return await this.prisma.menuItem.delete({ where: { id } });
   }
 }
