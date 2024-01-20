@@ -1,40 +1,42 @@
 body{
     background-color: #f2f2f2;
+    font-weight: 400;
+
     
 }
 
 * {
-    font-family: "Lato", 'Helvetica Nueue',Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
+
 }
 
 .btn-standard{
-    font-weight:700 !important;
-
-    background-color: #ED6F3B !important;
-    color: white !important;
+    font-weight:700 ;
+    background-color: #ED6F3B ;
+    color: white;
 }
 .font-md{
-    font-weight:600 !important;
+    font-weight:600 ;
 }
 .text-md{
-    font-size: 0.875rem !important;
+    font-size: 0.875rem ;
     line-height: 1.2rem;
 }
 .text-lg{
-    font-size: 1.125rem!important;
+    font-size: 1.125rem;
     line-height: 1.4rem;
 }
 .text-sm{
-    font-size: 0.75rem!important;
+    font-size: 1rem;
    }
 .fw-sm{
-    font-weight: 400!important;
+    font-weight: 400;
 }
 text-gray{
-    color: #51585f!important;
+    color: #51585f;
 }
 .text-primary{
-    color: #ED6F3B !important;
+    color: #ED6F3B ;
 }
 .text-gray {
     --tw-text-opacity: 1;
@@ -42,7 +44,7 @@ text-gray{
     }
 
 .btn-standard:hover{
-    background-color: #fc285d !important;
+    background-color: #fc285d ;
     
 }
 h1, h2,h3{
@@ -53,7 +55,6 @@ h1, h2 {
     margin-top: 5px;}
 
     #nav-btn a{
-        color: #ED6F3B;
         font-weight: 600;
         border-radius: 7px;
         /* padding: 10px 20px; */
@@ -62,7 +63,7 @@ h1, h2 {
     }
     #logout{
         background-color: #ED6F3B;
-        color: white !important;
+        color: white ;
     }
     #logout:hover{
         background-color:black;
@@ -70,7 +71,7 @@ h1, h2 {
 
     #login{
         background-color: black;
-        color: white !important;
+        color: white;
     }  
     #logout:hover{
         background-color:#fc285d;

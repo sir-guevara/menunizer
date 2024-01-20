@@ -34,6 +34,8 @@ type PlaceType= {
     numberOfTables: number;
     createdAt:      Date;
     updatedAt:      Date;
+    font?: string;
+    color?: string;
     categories:     CategoryType[];
 }
 

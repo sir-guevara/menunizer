@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import {  DataToken, IdDataToken, IdToken, Login, Token } from "./types";
+import {  Data, DataToken, IdDataToken, IdToken, Login, Token } from "./types";
 
 async function request(path: string, { data, token, method = "GET" }: { data?: unknown, token?: string | null, method?: string }): Promise<unknown> {
   const url = '/api' + path;
@@ -77,6 +77,9 @@ export function uploadImage(image:Blob|string) {
 export function fetchPlace(place:IdToken) {
   return request(`/places/${place.id}`, { token:place.token });
 }
+export function fetchPlaceMenu(placeId:string){
+  return request(`/menu/${placeId}/`,{method: "GET"});
+}
 
 export function addCategory(cat:DataToken) {
   return request(`/places/${cat.id}/categories/`, { data:cat.data, method: "POST", token: cat.token });
@@ -107,10 +110,9 @@ export function updatePlace(place:IdDataToken) {
   return request(`/places/${place.id}`, { data:place.data, token:place.token, method: "PATCH" });
 }
 
-export function createPaymentIntent(payment:DataToken) {
-  return request("/create_payment_intent/", {
-    data:payment.data,
-    token:payment.token,
+export function createPaymentIntent(payment:{amount:string, detail:string},placeId:string) {
+  return request(`/menu/${placeId}/create-payment-intent/`, {
+    data:payment,
     method: "POST",
   });
 }
