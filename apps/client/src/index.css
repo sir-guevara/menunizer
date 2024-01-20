@@ -89,3 +89,31 @@ h1, h2 {
 .boeSgZ {
     padding: 0 30px;
 }
+
+input{
+    font-family: sans-serif;
+    font-size: 0.9em !important;
+}
+
+.StripeElement{
+    height:38px;
+    padding: 10px 12px;
+    width:100%;
+    color:#32325d;
+    background-color:#fff;
+    border:1px solid #ced4da;
+    border-radius:4px;
+}
+
+.StripeElement--focus{
+    border-color:#80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123,255,0.25);
+}
+
+.StripeElement--invalid{
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill{
+    background-color:#fefde5!important;
+}

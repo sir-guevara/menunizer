@@ -3,8 +3,8 @@ import styled from "styled-components"
 import { AiFillEdit, AiOutlineDelete } from "react-icons/ai"
 import { ItemType } from "../types"
 
-interface StyledComponentProps {
-  active: boolean|string;
+type StyledComponentProps = {
+  active:boolean | string
 } 
 const Container = styled.div<StyledComponentProps>`
     border-radius: 5px;
@@ -12,7 +12,7 @@ const Container = styled.div<StyledComponentProps>`
     margin-bottom: 30px;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
     display:flex;
-    opacity: ${({ active }) => (active ? 1 : 0.6)};
+    opacity: ${({ active }) => ( active == 'true' ? 1 : 0.6)};
     > div:first-child {
         width: 40%;
         border-top-left-radius: 5px;
@@ -28,7 +28,7 @@ const Container = styled.div<StyledComponentProps>`
 `
 
 const MenuItem = ({ item, onEdit, onRemove, onOrder, color}:{item:ItemType, onEdit?:()=>void, onRemove?:()=>void, onOrder:( itm:ItemType ) => void, color?:string}) =>{
-  return (<Container active={item.isAvailable}>
+  return (<Container active={item.isAvailable.toString()}>
     <Col xs={5} style={{ backgroundImage: `url(${item.image})`}} />
     <Col xs={7} className="d-flex flex-column justify-content-between w-100">
       <div>

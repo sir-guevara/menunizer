@@ -110,8 +110,8 @@ export function updatePlace(place:IdDataToken) {
   return request(`/places/${place.id}`, { data:place.data, token:place.token, method: "PATCH" });
 }
 
-export function createPaymentIntent(payment:{amount:string, detail:string},placeId:string) {
-  return request(`/menu/${placeId}/create-payment-intent/`, {
+export function createPaymentIntent(payment) {
+  return request(`/menu/${payment.placeId}/create-payment-intent/`, {
     data:payment,
     method: "POST",
   });

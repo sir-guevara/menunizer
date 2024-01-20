@@ -4,6 +4,12 @@
   ],
   "hints": {
     "typescript-config/strict": "off",
-    "typescript-config/is-valid": "off"
+    "typescript-config/is-valid": "off",
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off"
+      }
+    ]
   }
 }

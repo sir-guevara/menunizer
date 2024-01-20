@@ -1,8 +1,9 @@
 import { Modal, Container, Row, Col } from 'react-bootstrap';
 import QRCode from './QRCode';
 import OperationButton from './OperationButton';
+import { PlaceType } from '../types';
 
-const QRCodeModal = ({ show, onHide, place, onUpdatePlace }:{show:boolean, onHide:()=>void, place:any,onUpdatePlace:(tn:number)=> void}) => (
+const QRCodeModal = ({ show, onHide, place, onUpdatePlace }:{show:boolean, onHide:()=>void, place:PlaceType,onUpdatePlace:(tn:number)=> void}) => (
   <Modal show={show} onHide={onHide} size="lg" centered>
     <Modal.Body className="text-center pt-4">
       <Container>

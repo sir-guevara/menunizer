@@ -1,7 +1,6 @@
 import MainLayout from "../layouts/MainLayout"
 import {Button,Form,Row,Col, Card, Spinner} from 'react-bootstrap'
 import { useContext, useState, useEffect } from "react"
-import { toast } from "react-toastify"
 import { Link, useNavigate } from "react-router-dom"
 import AuthContext from "../context/AuthContext"
 

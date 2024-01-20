@@ -59,14 +59,15 @@ const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
           </div>
 
           <hr className="mb-4" />
-        </Card.Body>
-        <StripeContext
+          <StripeContext
           amount={totalPrice}
           detail={items}
           placeId={placeId}
           onDone={onPaymentDone}
           color={color}
         />
+        </Card.Body>
+       
       </Card>
     </>
   );

@@ -13,12 +13,13 @@ const auth_module_1 = require("./auth/auth.module");
 const places_module_1 = require("./places/places.module");
 const category_module_1 = require("./category/category.module");
 const item_module_1 = require("./item/item.module");
+const menu_module_1 = require("./menu/menu.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [users_module_1.UsersModule, auth_module_1.AuthModule, places_module_1.PlacesModule, category_module_1.CategoryModule, item_module_1.ItemModule],
+        imports: [users_module_1.UsersModule, auth_module_1.AuthModule, places_module_1.PlacesModule, category_module_1.CategoryModule, item_module_1.ItemModule, menu_module_1.MenuModule],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
