@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { PlacesModule } from './places/places.module';
@@ -6,6 +6,11 @@ import { CategoryModule } from './category/category.module';
 import { ItemModule } from './item/item.module';
 import { MenuModule } from './menu/menu.module';
 import { OrderModule } from './order/order.module';
+import { OwnerMiddleware } from './middleware/owner.middleware';
+import { CategoryController } from './category/category.controller';
+import { PlacesController } from './places/places.controller';
+import { PrismaService } from './prisma/prisma.service';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -17,5 +22,13 @@ import { OrderModule } from './order/order.module';
     MenuModule,
     OrderModule,
   ],
+  providers: [JwtService, PrismaService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(OwnerMiddleware)
+      .exclude('/places')
+      .forRoutes(CategoryController, PlacesController);
+  }
+}

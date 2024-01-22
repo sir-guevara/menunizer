@@ -4,7 +4,7 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 export declare class CategoryController {
     private readonly categoryService;
     constructor(categoryService: CategoryService);
-    create(placeId: string, createCategoryDto: CreateCategoryDto, request: any): Promise<{
+    create(createCategoryDto: CreateCategoryDto, placeId: string, request: any): Promise<{
         id: string;
         name: string;
         placeId: string;

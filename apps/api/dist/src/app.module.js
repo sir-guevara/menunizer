@@ -15,7 +15,18 @@ const category_module_1 = require("./category/category.module");
 const item_module_1 = require("./item/item.module");
 const menu_module_1 = require("./menu/menu.module");
 const order_module_1 = require("./order/order.module");
+const owner_middleware_1 = require("./middleware/owner.middleware");
+const category_controller_1 = require("./category/category.controller");
+const places_controller_1 = require("./places/places.controller");
+const prisma_service_1 = require("./prisma/prisma.service");
+const jwt_1 = require("@nestjs/jwt");
 let AppModule = class AppModule {
+    configure(consumer) {
+        consumer
+            .apply(owner_middleware_1.OwnerMiddleware)
+            .exclude('/places')
+            .forRoutes(category_controller_1.CategoryController, places_controller_1.PlacesController);
+    }
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
@@ -29,6 +40,7 @@ exports.AppModule = AppModule = __decorate([
             menu_module_1.MenuModule,
             order_module_1.OrderModule,
         ],
+        providers: [jwt_1.JwtService, prisma_service_1.PrismaService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

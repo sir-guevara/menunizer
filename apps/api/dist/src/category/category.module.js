@@ -11,19 +11,14 @@ const common_1 = require("@nestjs/common");
 const category_service_1 = require("./category.service");
 const category_controller_1 = require("./category.controller");
 const prisma_module_1 = require("../prisma/prisma.module");
-const client_1 = require("@prisma/client");
-const owner_middleware_1 = require("../middleware/owner.middleware");
 let CategoryModule = class CategoryModule {
-    configure(consumer) {
-        consumer.apply(owner_middleware_1.OwnerMiddleware).forRoutes(category_controller_1.CategoryController);
-    }
 };
 exports.CategoryModule = CategoryModule;
 exports.CategoryModule = CategoryModule = __decorate([
     (0, common_1.Module)({
         imports: [prisma_module_1.PrismaModule],
         controllers: [category_controller_1.CategoryController],
-        providers: [category_service_1.CategoryService, client_1.PrismaClient],
+        providers: [category_service_1.CategoryService],
     })
 ], CategoryModule);
 //# sourceMappingURL=category.module.js.map

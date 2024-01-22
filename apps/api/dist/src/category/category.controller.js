@@ -18,11 +18,13 @@ const category_service_1 = require("./category.service");
 const create_category_dto_1 = require("./dto/create-category.dto");
 const update_category_dto_1 = require("./dto/update-category.dto");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const owner_interceptor_1 = require("../middleware/owner.interceptor");
 let CategoryController = class CategoryController {
     constructor(categoryService) {
         this.categoryService = categoryService;
     }
-    create(placeId, createCategoryDto, request) {
+    create(createCategoryDto, placeId, request) {
+        console.log({ placeId });
         if (request.place.ownerId !== request.user.id) {
             throw new common_1.HttpException('Unauthorized', common_1.HttpStatus.UNAUTHORIZED);
         }
@@ -50,12 +52,12 @@ let CategoryController = class CategoryController {
 };
 exports.CategoryController = CategoryController;
 __decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Param)('placeId')),
-    __param(1, (0, common_1.Body)()),
+    (0, common_1.Post)(''),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)('placeId')),
     __param(2, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, create_category_dto_1.CreateCategoryDto, Object]),
+    __metadata("design:paramtypes", [create_category_dto_1.CreateCategoryDto, String, Object]),
     __metadata("design:returntype", void 0)
 ], CategoryController.prototype, "create", null);
 __decorate([
@@ -91,6 +93,7 @@ __decorate([
 ], CategoryController.prototype, "remove", null);
 exports.CategoryController = CategoryController = __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.UseInterceptors)(owner_interceptor_1.OwnerCheckInterceptor),
     (0, common_1.Controller)('/places/:placeId/categories'),
     __metadata("design:paramtypes", [category_service_1.CategoryService])
 ], CategoryController);

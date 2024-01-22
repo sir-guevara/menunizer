@@ -8,13 +8,16 @@ import {
   Req,
   UseGuards,
   Patch,
+  UseInterceptors,
 } from '@nestjs/common';
 import { PlacesService } from './places.service';
 import { CreatePlaceDto } from './dto/create-place.dto';
 import { UpdatePlaceDto } from './dto/update-place.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { OwnerCheckInterceptor } from 'src/middleware/owner.interceptor';
 
 @UseGuards(JwtAuthGuard)
+@UseInterceptors(OwnerCheckInterceptor)
 @Controller('places')
 export class PlacesController {
   constructor(private readonly placesService: PlacesService) {}

@@ -14,8 +14,7 @@ export class OwnerMiddleware implements NestMiddleware {
 
   async use(req: Request, res: Response, next: NextFunction) {
     try {
-      const id = req.params[0];
-      console.log(req);
+      const id = req.params.placeId;
       if (!id) {
         return res.status(403).json({ error: 'Unauthorized' });
       }
@@ -28,6 +27,7 @@ export class OwnerMiddleware implements NestMiddleware {
       req['place'] = plc;
       return next();
     } catch (error) {
+      console.log(error);
       return res.status(500).json({ error: 'Error fetching place' });
     }
   }

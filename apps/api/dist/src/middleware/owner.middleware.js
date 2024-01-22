@@ -18,8 +18,7 @@ let OwnerMiddleware = class OwnerMiddleware {
     }
     async use(req, res, next) {
         try {
-            const id = req.params[0];
-            console.log(req);
+            const id = req.params.placeId;
             if (!id) {
                 return res.status(403).json({ error: 'Unauthorized' });
             }
@@ -33,6 +32,7 @@ let OwnerMiddleware = class OwnerMiddleware {
             return next();
         }
         catch (error) {
+            console.log(error);
             return res.status(500).json({ error: 'Error fetching place' });
         }
     }

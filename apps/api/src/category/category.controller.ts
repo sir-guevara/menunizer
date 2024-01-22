@@ -10,23 +10,27 @@ import {
   Req,
   HttpStatus,
   HttpException,
+  UseInterceptors,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { OwnerCheckInterceptor } from 'src/middleware/owner.interceptor';
 
 @UseGuards(JwtAuthGuard)
+@UseInterceptors(OwnerCheckInterceptor)
 @Controller('/places/:placeId/categories')
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
-  @Post()
+  @Post('')
   create(
-    @Param('placeId') placeId: string,
     @Body() createCategoryDto: CreateCategoryDto,
+    @Param('placeId') placeId: string,
     @Req() request: any,
   ) {
+    console.log({ placeId });
     if (request.place.ownerId !== request.user.id) {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }

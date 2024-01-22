@@ -18,6 +18,7 @@ const places_service_1 = require("./places.service");
 const create_place_dto_1 = require("./dto/create-place.dto");
 const update_place_dto_1 = require("./dto/update-place.dto");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const owner_interceptor_1 = require("../middleware/owner.interceptor");
 let PlacesController = class PlacesController {
     constructor(placesService) {
         this.placesService = placesService;
@@ -80,6 +81,7 @@ __decorate([
 ], PlacesController.prototype, "remove", null);
 exports.PlacesController = PlacesController = __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.UseInterceptors)(owner_interceptor_1.OwnerCheckInterceptor),
     (0, common_1.Controller)('places'),
     __metadata("design:paramtypes", [places_service_1.PlacesService])
 ], PlacesController);
