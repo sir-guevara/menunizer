@@ -3,10 +3,6 @@ import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class CreateOrderDto {
   @IsNotEmpty()
   @IsString()
-  customerName: string;
-
-  @IsNotEmpty()
-  @IsString()
   placeId: string;
 
   @IsNotEmpty()
@@ -17,14 +13,14 @@ export class CreateOrderDto {
   @IsString()
   detail: string;
 
-  paymentIntent?: PaymentIntentInterface;
+  paymentMethod?: PaymentMethodInterface;
 
   @IsNotEmpty()
   @IsNumber()
   amount: number;
 }
 
-interface PaymentIntentInterface {
+interface PaymentMethodInterface {
   id: string;
   object: string;
   billing_details: BillingDetails;

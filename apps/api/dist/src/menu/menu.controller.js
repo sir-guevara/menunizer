@@ -24,7 +24,7 @@ let MenuController = class MenuController {
     create(createOrderDto) {
         return this.menuService.create(createOrderDto);
     }
-    createPaymentIntent(payment, placeId, req) {
+    CreatePaymentTheIntent(payment, placeId, req) {
         console.log(req);
         return this.menuService.createPaymentIntent(payment);
     }
@@ -50,13 +50,13 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], MenuController.prototype, "create", null);
 __decorate([
-    (0, common_1.Post)('/create-payment-intent'),
+    (0, common_1.Post)('/create-payment-intent/'),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Param)('placeId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_menu_dto_1.CreateOrderDto, String, Object]),
     __metadata("design:returntype", void 0)
-], MenuController.prototype, "createPaymentIntent", null);
+], MenuController.prototype, "CreatePaymentTheIntent", null);
 __decorate([
     (0, common_1.Get)(),
     __param(0, (0, common_1.Param)('placeId')),

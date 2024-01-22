@@ -41,21 +41,19 @@ export class MenuService {
 
   async createPaymentIntent(payment: CreateOrderDto) {
     try {
-      const customer = await this.stripeClient.customers.create({
-        email: 'customer@menunizer.com',
-        name: 'Simon',
-      });
+      const { paymentMethod, ...rest } = payment;
       const paymentIntent = await this.stripeClient.paymentIntents.create({
-        off_session: true,
-        customer: customer.id,
-        automatic_payment_methods: { enabled: true },
         amount: payment.amount * 100,
         currency: 'usd',
+        payment_method: paymentMethod.id,
+        off_session: true,
+        confirm: true,
       });
-
-      console.log({ payment });
-
-      return paymentIntent;
+      const order = await this.create({
+        ...rest,
+        paymentIntent: paymentIntent.id,
+      });
+      return order;
     } catch (error) {
       throw new Error(`Error creating Payment Intent: ${error.message}`);
     }

@@ -30,14 +30,14 @@ let PlacesController = class PlacesController {
         const id = request.user.id;
         return this.placesService.findAllByOwner(id);
     }
-    findOne(id) {
-        return this.placesService.findOne(id);
+    findOne(placeId) {
+        return this.placesService.findOne(placeId);
     }
-    update(id, updatePlaceDto) {
-        return this.placesService.update(id, updatePlaceDto);
+    update(placeId, updatePlaceDto) {
+        return this.placesService.update(placeId, updatePlaceDto);
     }
-    remove(id) {
-        return this.placesService.remove(id);
+    remove(placeId) {
+        return this.placesService.remove(placeId);
     }
 };
 exports.PlacesController = PlacesController;
@@ -57,23 +57,23 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PlacesController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(':placeId'),
+    __param(0, (0, common_1.Param)('placeId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], PlacesController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Patch)(':placeId'),
+    __param(0, (0, common_1.Param)('placeId')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_place_dto_1.UpdatePlaceDto]),
     __metadata("design:returntype", void 0)
 ], PlacesController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Delete)(':placeId'),
+    __param(0, (0, common_1.Param)('placeId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)

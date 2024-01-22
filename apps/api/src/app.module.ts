@@ -5,8 +5,17 @@ import { PlacesModule } from './places/places.module';
 import { CategoryModule } from './category/category.module';
 import { ItemModule } from './item/item.module';
 import { MenuModule } from './menu/menu.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
-  imports: [UsersModule, AuthModule, PlacesModule, CategoryModule, ItemModule, MenuModule],
+  imports: [
+    UsersModule,
+    AuthModule,
+    PlacesModule,
+    CategoryModule,
+    ItemModule,
+    MenuModule,
+    OrderModule,
+  ],
 })
 export class AppModule {}

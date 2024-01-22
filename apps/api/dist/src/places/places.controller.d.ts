@@ -26,7 +26,7 @@ export declare class PlacesController {
         createdAt: Date;
         updatedAt: Date;
     }[]>;
-    findOne(id: string): import(".prisma/client").Prisma.Prisma__PlaceClient<{
+    findOne(placeId: string): import(".prisma/client").Prisma.Prisma__PlaceClient<{
         categories: ({
             items: {
                 id: string;
@@ -53,7 +53,7 @@ export declare class PlacesController {
         createdAt: Date;
         updatedAt: Date;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
-    update(id: string, updatePlaceDto: UpdatePlaceDto): import(".prisma/client").Prisma.Prisma__PlaceClient<{
+    update(placeId: string, updatePlaceDto: UpdatePlaceDto): import(".prisma/client").Prisma.Prisma__PlaceClient<{
         categories: ({
             items: {
                 id: string;
@@ -80,7 +80,7 @@ export declare class PlacesController {
         createdAt: Date;
         updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
-    remove(id: string): import(".prisma/client").Prisma.Prisma__PlaceClient<{
+    remove(placeId: string): import(".prisma/client").Prisma.Prisma__PlaceClient<{
         id: string;
         name: string;
         ownerId: string;

@@ -31,18 +31,21 @@ export class PlacesController {
     return this.placesService.findAllByOwner(id);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.placesService.findOne(id);
+  @Get(':placeId')
+  findOne(@Param('placeId') placeId: string) {
+    return this.placesService.findOne(placeId);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePlaceDto: UpdatePlaceDto) {
-    return this.placesService.update(id, updatePlaceDto);
+  @Patch(':placeId')
+  update(
+    @Param('placeId') placeId: string,
+    @Body() updatePlaceDto: UpdatePlaceDto,
+  ) {
+    return this.placesService.update(placeId, updatePlaceDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.placesService.remove(id);
+  @Delete(':placeId')
+  remove(@Param('placeId') placeId: string) {
+    return this.placesService.remove(placeId);
   }
 }

@@ -11,11 +11,11 @@ const common_1 = require("@nestjs/common");
 const category_service_1 = require("./category.service");
 const category_controller_1 = require("./category.controller");
 const prisma_module_1 = require("../prisma/prisma.module");
-const middleware_1 = require("../middleware");
 const client_1 = require("@prisma/client");
+const owner_middleware_1 = require("../middleware/owner.middleware");
 let CategoryModule = class CategoryModule {
     configure(consumer) {
-        consumer.apply(middleware_1.OwnerMiddleware).forRoutes(category_controller_1.CategoryController);
+        consumer.apply(owner_middleware_1.OwnerMiddleware).forRoutes(category_controller_1.CategoryController);
     }
 };
 exports.CategoryModule = CategoryModule;

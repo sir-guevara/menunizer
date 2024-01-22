@@ -23,8 +23,8 @@ export class CategoryController {
 
   @Post()
   create(
-    @Body() createCategoryDto: CreateCategoryDto,
     @Param('placeId') placeId: string,
+    @Body() createCategoryDto: CreateCategoryDto,
     @Req() request: any,
   ) {
     if (request.place.ownerId !== request.user.id) {

@@ -1,12 +1,11 @@
 export declare class CreateOrderDto {
-    customerName: string;
     placeId: string;
     table: number;
     detail: string;
-    paymentIntent?: PaymentIntentInterface;
+    paymentMethod?: PaymentMethodInterface;
     amount: number;
 }
-interface PaymentIntentInterface {
+interface PaymentMethodInterface {
     id: string;
     object: string;
     billing_details: BillingDetails;

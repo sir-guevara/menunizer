@@ -20,8 +20,8 @@ export class MenuController {
   create(@Body() createOrderDto: CreateOrderDto) {
     return this.menuService.create(createOrderDto);
   }
-  @Post('/create-payment-intent')
-  createPaymentIntent(
+  @Post('/create-payment-intent/')
+  CreatePaymentTheIntent(
     @Body() payment: CreateOrderDto,
     @Param('placeId') placeId: string,
     req: Request,

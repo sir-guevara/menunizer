@@ -18,11 +18,6 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], CreateOrderDto.prototype, "customerName", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
 ], CreateOrderDto.prototype, "placeId", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),

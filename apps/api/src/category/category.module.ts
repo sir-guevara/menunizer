@@ -2,8 +2,8 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CategoryController } from './category.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';
-import { OwnerMiddleware } from 'src/middleware';
 import { PrismaClient } from '@prisma/client'; // Import PrismaClient
+import { OwnerMiddleware } from 'src/middleware/owner.middleware';
 
 @Module({
   imports: [PrismaModule],

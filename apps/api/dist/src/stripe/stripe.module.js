@@ -21,7 +21,7 @@ exports.StripeModule = StripeModule = __decorate([
                 provide: 'STRIPE_CLIENT',
                 useFactory: async (configService) => {
                     const stripeSecretKey = configService.get('STRIPE_SECRET_KEY');
-                    return new stripe_1.default(stripeSecretKey, { apiVersion: '2022-08-01' });
+                    return new stripe_1.default(stripeSecretKey, { apiVersion: '2023-10-16' });
                 },
                 inject: [config_1.ConfigService],
             },

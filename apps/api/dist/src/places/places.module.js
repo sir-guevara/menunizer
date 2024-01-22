@@ -11,14 +11,19 @@ const common_1 = require("@nestjs/common");
 const places_service_1 = require("./places.service");
 const places_controller_1 = require("./places.controller");
 const prisma_module_1 = require("../prisma/prisma.module");
+const owner_middleware_1 = require("../middleware/owner.middleware");
+const client_1 = require("@prisma/client");
 let PlacesModule = class PlacesModule {
+    configure(consumer) {
+        consumer.apply(owner_middleware_1.OwnerMiddleware).exclude('/places').forRoutes('/places/*');
+    }
 };
 exports.PlacesModule = PlacesModule;
 exports.PlacesModule = PlacesModule = __decorate([
     (0, common_1.Module)({
         imports: [prisma_module_1.PrismaModule],
         controllers: [places_controller_1.PlacesController],
-        providers: [places_service_1.PlacesService],
+        providers: [places_service_1.PlacesService, client_1.PrismaClient],
     })
 ], PlacesModule);
 //# sourceMappingURL=places.module.js.map
