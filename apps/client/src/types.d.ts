@@ -45,4 +45,33 @@ type CategoryType ={
     placeId: string;
     items:   ItemType[];}
 
-export type { Login, DataToken, IdDataToken, Token, Data, IdToken,ItemType,AuthContextType,CategoryType,PlaceType}
+type ShoppingCartType = {
+      [key: string]: ShoppingCartValue 
+    }
+    
+type ShoppingCartValueType ={
+        id:          string;
+        name:        string;
+        image:       string;
+        price:       number;
+        categoryId:  string;
+        description: string;
+        isAvailable: boolean;
+        quantity:    number;
+    }
+    
+
+type OrderType  = {
+        id:            number;
+        placeId:       string;
+        table:         number;
+        detail:        string;
+        paymentIntent: string;
+        amount:        number;
+        status:        string;
+        createdAt:     Date;
+        updatedAt:     Date;
+    }
+
+    
+export type { Login, DataToken, IdDataToken, Token, Data, IdToken,ItemType,AuthContextType,CategoryType,PlaceType,ShoppingCartType, ShoppingCartValueType, OrderType } 

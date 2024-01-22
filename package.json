@@ -38,7 +38,7 @@
     "react-icons": "^5.0.1",
     "react-router-dom": "latest",
     "react-to-print": "^2.14.15",
-    "stripe": "10.14.0",
+    "stripe": "latest",
     "styled-components": "^6.1.8"
   }
 }

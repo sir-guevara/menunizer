@@ -1,5 +1,5 @@
-import { toast } from "react-toastify";
-import {  Data, DataToken, IdDataToken, IdToken, Login, Token } from "./types";
+import { Id, toast } from "react-toastify";
+import { DataToken, IdDataToken, IdToken, Login, Token } from "./types";
 
 async function request(path: string, { data, token, method = "GET" }: { data?: unknown, token?: string | null, method?: string }): Promise<unknown> {
   const url = '/api' + path;
@@ -16,9 +16,10 @@ async function request(path: string, { data, token, method = "GET" }: { data?: u
     if (response.ok) {
       return method === "DELETE" ? true : response.json();
     }
-    // if(response.status == 400){
-    //   toast.error(await response.text(), {type: "error"});
-    // }
+    if(response.status == 403){
+      const json = await response.json()
+     return  toast.error( json.message, {type: "error"});
+    }
     const json = await response.json();
     if(Array.isArray(json.message)){
       toast.error(json.message[0], {type: "error"});
@@ -28,7 +29,7 @@ async function request(path: string, { data, token, method = "GET" }: { data?: u
   } catch (error: any) {
     if (error instanceof SyntaxError) {
         toast("Server Error", { type: "error" });
-      throw new Error(JSON.stringify({"message":"Server Error"}));
+      // throw new Error(JSON.stringify({"message":"Server Error"}));
     }
 
     // Handle all other errors
@@ -110,7 +111,8 @@ export function updatePlace(place:IdDataToken) {
   return request(`/places/${place.id}`, { data:place.data, token:place.token, method: "PATCH" });
 }
 
-export function createPaymentIntent(payment) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function createPaymentIntent(payment:any) {
   return request(`/menu/${payment.placeId}/create-payment-intent/`, {
     data:payment,
     method: "POST",
@@ -118,9 +120,9 @@ export function createPaymentIntent(payment) {
 }
 
 export function fetchOrders(place:IdToken) {
-  return request(`/api/orders/?place=${place.id}`, { token:place.token });
+  return request(`/orders/${place.placeId}/`, { token:place.token });
 }
 
-export function completeOrder(order:IdDataToken) {
-  return request(`/api/orders/${order.id}`, {data: order.data, token:order.token, method: "PATCH" });
+export function completeOrder(order:IdDataToken, placeId: string) {
+  return request(`/orders/${placeId}/${order.id}`, {data: order.data, token:order.token, method: "PATCH" });
 }
