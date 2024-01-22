@@ -11,6 +11,7 @@ import { CategoryController } from './category/category.controller';
 import { PlacesController } from './places/places.controller';
 import { PrismaService } from './prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
+import { OrderController } from './order/order.controller';
 
 @Module({
   imports: [
@@ -29,6 +30,6 @@ export class AppModule implements NestModule {
     consumer
       .apply(OwnerMiddleware)
       .exclude('/places')
-      .forRoutes(CategoryController, PlacesController);
+      .forRoutes(CategoryController, PlacesController, OrderController);
   }
 }

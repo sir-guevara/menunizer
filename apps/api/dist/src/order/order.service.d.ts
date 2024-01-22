@@ -14,7 +14,6 @@ export declare class OrderService {
         createdAt: Date;
         updatedAt: Date;
     }[]>;
-    findOne(id: number): string;
     update(id: number, updateOrderDto: UpdateOrderDto): import(".prisma/client").Prisma.Prisma__OrderClient<{
         id: number;
         placeId: string;

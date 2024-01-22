@@ -19,12 +19,9 @@ let OrderService = class OrderService {
     findAll(placeId) {
         return this.prisma.order.findMany({ where: { placeId } });
     }
-    findOne(id) {
-        return `This action returns a #${id} order`;
-    }
     update(id, updateOrderDto) {
         return this.prisma.order.update({
-            where: { id },
+            where: { id: parseInt(`${id}`) },
             data: { ...updateOrderDto },
         });
     }

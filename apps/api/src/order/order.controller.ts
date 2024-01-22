@@ -5,38 +5,34 @@ import {
   Patch,
   Param,
   Delete,
-  Query,
   UseGuards,
   Req,
+  UseInterceptors,
 } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { OwnerCheckInterceptor } from 'src/middleware/owner.interceptor';
 
 @UseGuards(JwtAuthGuard)
-@Controller('/orders')
+@UseInterceptors(OwnerCheckInterceptor)
+@Controller('/orders/:placeId')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
   @Get()
-  findAll(@Req() request: any, @Query('placeId') placeId: string) {
-    const user = request.user;
-    const place = request.place;
-    return { user, place, placeId };
+  findAll(@Param('placeId') placeId: string) {
+    return this.orderService.findAll(placeId);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.orderService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateOrderDto: UpdateOrderDto) {
-    return this.orderService.update(+id, updateOrderDto);
+  @Patch('/:id')
+  update(@Param('id') id: number, @Body() updateOrderDto: UpdateOrderDto) {
+    // id = parseInt(id);
+    return this.orderService.update(id, updateOrderDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.orderService.remove(+id);
   }
 }

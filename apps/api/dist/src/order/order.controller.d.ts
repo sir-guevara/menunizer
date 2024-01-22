@@ -3,13 +3,18 @@ import { UpdateOrderDto } from './dto/update-order.dto';
 export declare class OrderController {
     private readonly orderService;
     constructor(orderService: OrderService);
-    findAll(request: any, placeId: string): {
-        user: any;
-        place: any;
+    findAll(placeId: string): import(".prisma/client").Prisma.PrismaPromise<{
+        id: number;
         placeId: string;
-    };
-    findOne(id: string): string;
-    update(id: string, updateOrderDto: UpdateOrderDto): import(".prisma/client").Prisma.Prisma__OrderClient<{
+        table: number;
+        detail: string;
+        paymentIntent: string;
+        amount: number;
+        status: string;
+        createdAt: Date;
+        updatedAt: Date;
+    }[]>;
+    update(id: number, updateOrderDto: UpdateOrderDto): import(".prisma/client").Prisma.Prisma__OrderClient<{
         id: number;
         placeId: string;
         table: number;
@@ -20,7 +25,7 @@ export declare class OrderController {
         createdAt: Date;
         updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
-    remove(id: string): import(".prisma/client").Prisma.Prisma__OrderClient<{
+    remove(id: number): import(".prisma/client").Prisma.Prisma__OrderClient<{
         id: number;
         placeId: string;
         table: number;

@@ -20,12 +20,13 @@ const category_controller_1 = require("./category/category.controller");
 const places_controller_1 = require("./places/places.controller");
 const prisma_service_1 = require("./prisma/prisma.service");
 const jwt_1 = require("@nestjs/jwt");
+const order_controller_1 = require("./order/order.controller");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
             .apply(owner_middleware_1.OwnerMiddleware)
             .exclude('/places')
-            .forRoutes(category_controller_1.CategoryController, places_controller_1.PlacesController);
+            .forRoutes(category_controller_1.CategoryController, places_controller_1.PlacesController, order_controller_1.OrderController);
     }
 };
 exports.AppModule = AppModule;

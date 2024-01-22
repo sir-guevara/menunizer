@@ -26,13 +26,12 @@ let OwnerMiddleware = class OwnerMiddleware {
                 where: { id: id },
             });
             if (!plc) {
-                throw new common_1.HttpException('Unauthorized', common_1.HttpStatus.NOT_FOUND);
+                throw new common_1.HttpException('Unauthorized', common_1.HttpStatus.UNAUTHORIZED);
             }
             req['place'] = plc;
             return next();
         }
         catch (error) {
-            console.log(error);
             return res.status(500).json({ error: 'Error fetching place' });
         }
     }

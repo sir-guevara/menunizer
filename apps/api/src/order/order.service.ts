@@ -7,16 +7,13 @@ export class OrderService {
   constructor(private prisma: PrismaService) {}
 
   findAll(placeId: string) {
+    // console.log(placeId);
     return this.prisma.order.findMany({ where: { placeId } });
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} order`;
   }
 
   update(id: number, updateOrderDto: UpdateOrderDto) {
     return this.prisma.order.update({
-      where: { id },
+      where: { id: parseInt(`${id}`) },
       data: { ...updateOrderDto },
     });
   }

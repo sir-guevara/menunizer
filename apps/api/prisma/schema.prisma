@@ -62,7 +62,7 @@ model Order {
   detail         String
   paymentIntent  String
   amount         Float
-  status         String     @default("payment processing")
+  status         String     @default("processing")
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 }

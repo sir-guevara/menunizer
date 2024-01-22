@@ -22,12 +22,12 @@ export class OwnerMiddleware implements NestMiddleware {
         where: { id: id },
       });
       if (!plc) {
-        throw new HttpException('Unauthorized', HttpStatus.NOT_FOUND);
+        throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
       }
       req['place'] = plc;
       return next();
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return res.status(500).json({ error: 'Error fetching place' });
     }
   }

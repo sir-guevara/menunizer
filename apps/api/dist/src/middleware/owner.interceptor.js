@@ -13,9 +13,6 @@ let OwnerCheckInterceptor = class OwnerCheckInterceptor {
         const request = context.switchToHttp().getRequest();
         if (request.place) {
             if (request.place.ownerId == request.user.id) {
-                const user = request.user;
-                const place = request.place;
-                console.log(`${user.username} owns ${place.name}`);
                 return next.handle();
             }
             else {
