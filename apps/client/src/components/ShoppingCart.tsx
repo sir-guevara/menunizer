@@ -8,7 +8,7 @@ const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
   const placeId = param.id;
   
   const totalPrice = useMemo(
-    () => items.map((i) => i.quantity * i.price).reduce((a, b) => a + b, 0),
+    () => items.map((i) =>parseFloat( `${(i.quantity * i.price).toFixed(2)}`)).reduce((a, b) => a + b, 0),
     [items]
   );
 
