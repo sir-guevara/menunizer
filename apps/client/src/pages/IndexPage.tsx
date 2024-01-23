@@ -6,7 +6,7 @@ import { AuthContextType } from "../types";
 function IndexPage() {
   const auth = useContext(AuthContext) as AuthContextType;
   return (
-    <>
+    <div id="landing">
       <header className="header__main_area">
         <div className="container">
           <div className="row">
@@ -18,13 +18,14 @@ function IndexPage() {
                   </a>
                 </div>
                 <div className="header__menu">
+                {auth.token && (
                   <nav className="menu">
                     <ul>
                       <li>
                         <Link to="/places">Places</Link>
                       </li>
                     </ul>
-                  </nav>
+                  </nav>)}
                   <div className="mobile_menu">
                     <div className="all_p_humber">
                       <span></span>
@@ -83,7 +84,19 @@ function IndexPage() {
                   </Link>
                 </div>
                 <div className="banner__content_right" data-aos="fade-left">
-                  <img src="/assets/images/banner_item.png" alt="item_image" />
+                  <div className="scan_code">
+                    <a>
+                      <img src="/qr.png" alt="QR_Code" />
+                      <p>
+                        Scan Me <span>To Try</span>
+                      </p>
+                    </a>
+                  </div>
+                  <div className="qr_code text-center">
+                    <span>
+                      Or <a href="https://menunizer.linkr.pro/menu/clrq2mqvw0004oc06otmbd2k2/2" target="_blank" rel="noopener">Click Here</a>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -121,17 +134,16 @@ function IndexPage() {
               <div className="scan__main_content ptb_2">
                 <div className="scan__main_content_left" data-aos="fade-up">
                   <div className="scan_code">
-                    <a href="#">
-                      <img src="/assets/images/qrcode.png" alt="QR_Code" />
+                    <a >
+                      <img src="/qr.png" alt="QR_Code" />
                       <p>
                         Scan Me <span>To Try</span>
                       </p>
                     </a>
                   </div>
                   <div className="qr_code text-center">
-                    {/* TODO */}
                     <span>
-                      Or <a href="#">Click Here</a>
+                      Or <a href="https://menunizer.linkr.pro/menu/clrq2mqvw0004oc06otmbd2k2/2" target="_blank" rel="noopener">Click Here</a>
                     </span>
                   </div>
                 </div>
@@ -487,7 +499,7 @@ function IndexPage() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
 

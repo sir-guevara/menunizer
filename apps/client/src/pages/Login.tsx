@@ -16,7 +16,9 @@ const Login  = () =>{
             navigateTo('/places', { replace: true });
         }
     })
-
+    const demoLogin = async ()=>{
+        auth.signIn({username:'alex@ruheni.com',password:'password-alex'},()=> navigateTo('/places'));
+    }
     const onClick = async () =>{
         auth.signIn({username,password},()=> navigateTo('/places'));
     }

@@ -19,7 +19,7 @@ time, mark, audio, span, video {
    background: transparent;
 }
 body{
-  font-family: 'Hurme Geometric Sans 2';
+  font-family: 'Josefin', sans-serif;
   font-weight: 500;
   font-size: 16px;
   overflow: hidden;
@@ -94,11 +94,17 @@ h5{
   line-height: 58px;
   color: #ED6F3B;
 }
-p {
+#landing p {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 33px;
   color: #000000;
+}
+@media screen and (max-width: 768px) {
+  #landing p {
+    font-size: 14px;
+    line-height: 1.2rem;
+    font-weight: 400;}
 }
 img{
   width: 100%;
