@@ -1,4 +1,4 @@
-import { Id, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { DataToken, IdDataToken, IdToken, Login, Token } from "./types";
 
 async function request(path: string, { data, token, method = "GET" }: { data?: unknown, token?: string | null, method?: string }): Promise<unknown> {

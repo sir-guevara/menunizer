@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IoMdArrowBack } from "react-icons/io";
 import { AiOutlineDelete, AiOutlineQrcode } from "react-icons/ai";
 import { RiFileList3Line } from "react-icons/ri";
@@ -48,7 +50,7 @@ const Place = () => {
   const onBack = () => navigate("/places");
 
   const onFetchPlace = async () => {
-    const json = await fetchPlace({ id: params.id, token: auth.token });
+    const json:any = await fetchPlace({ id: params.id, token: auth.token });
     if (json) {
       setPlace(json);
     }
@@ -82,9 +84,8 @@ const Place = () => {
 
   const onUpdatePlace = (tables: number):void => {
     updatePlace({id:place!.id, data:{ numberOfTables: tables }, token:auth.token}).then(
-      (json) => {
+      (json:any) => {
         if (json) {
-          console.log(json)
           setPlace(json);
           toast("Place updated successfully",{type: "success"})
         }

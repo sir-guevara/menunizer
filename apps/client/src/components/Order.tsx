@@ -26,7 +26,7 @@ const Order = ({ order, onComplete }) => {
 
         <div>
           {onComplete ? (
-            <Button variant="primary" size="md" onClick={onComplete}>
+            <Button variant="standard" size="sm" onClick={onComplete}>
               Done
             </Button>
           ) : null}

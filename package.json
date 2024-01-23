@@ -3,11 +3,13 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "^1.0.3"
   },
   "workspaces": ["apps/*"],
   "scripts": {
-    "dev": "turbo run dev"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "node ./apps/api/dist/src/main"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -16,6 +18,7 @@
     "@nestjs/config": "^3.1.1",
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/passport": "^10.0.3",
+    "@nestjs/serve-static": "^4.0.0",
     "@prisma/client": "latest",
     "@stripe/react-stripe-js": "1.16.4",
     "@stripe/stripe-js": "1.13.2",

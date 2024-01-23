@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState } from "react";
 import { signIn as singInApi, register as registerApi  } from "../api";
 
+ // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+ // @ts-expect-error
 const AuthContext = createContext();
 
 interface SignInResponse {
@@ -32,7 +35,7 @@ export function AuthProvider({ children }) {
 
     const register = async ({username,password}: { username: string; password: string },callback)=>{
         setLoading(true);
-        const response = await registerApi({username,password});
+        const response:any = await registerApi({username,password});
         if(response && response.id){
             console.log("response  :  ",response);
             callback()

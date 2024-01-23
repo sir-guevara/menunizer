@@ -3,12 +3,13 @@ import {Button,Form,Row,Col, Card, Spinner} from 'react-bootstrap'
 import { useContext, useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import AuthContext from "../context/AuthContext"
+import { AuthContextType } from "../types"
 
 const Login  = () =>{
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
     const navigateTo = useNavigate();
-    const auth = useContext(AuthContext);
+    const auth = useContext(AuthContext) as AuthContextType;
 
     useEffect(() =>{
         if(auth.token){

@@ -25,7 +25,7 @@ export class UsersController {
   }
 
   @Get()
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   async findAll() {
     const users = await this.usersService.findAll();
     // return users.map((user) => new UserEntity(user));

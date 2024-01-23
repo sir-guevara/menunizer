@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   CardElement,
   Elements,
@@ -35,7 +36,7 @@ export const PaymentForm = ({amount, detail, onDone}) => {
         table:parseFloat(`${table}`),
         paymentMethod
       }
-      const json = await createPaymentIntent(data);
+      const json:any = await createPaymentIntent(data);
       if(json){
         toast(`Your order #${json?.id} is processing`, {type: "success"});
         onDone();

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import MenuItem from './MenuItem';
-import { ShoppingCartValueType, PlaceType } from '../types';
+import { PlaceType } from '../types';
 
 interface FontInterface{
     font:string
@@ -21,7 +21,7 @@ const Container = styled.div<FontInterface>`
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const MenuList = ({ place, shoppingCart = {}, onOrder, font,color }:{place:PlaceType,shoppingCart?:any,onOrder:(item:ShoppingCartValueType)=>void,font?:string,color?:string}) => {
+const MenuList = ({ place, shoppingCart = {}, onOrder, font,color }:{place:PlaceType,shoppingCart?:any,onOrder:(item:any)=>void,font?:string,color?:string}) => {
   if(place?.categories?.length == 0){ 
     return <h4 className='text-center text-gray'>Please Add Menu Categories <br/> and menu items</h4>}
   return (

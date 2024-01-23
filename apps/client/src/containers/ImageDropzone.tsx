@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Spinner } from "react-bootstrap";
 
 import { useDropzone } from "react-dropzone";

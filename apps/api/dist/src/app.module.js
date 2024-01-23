@@ -21,6 +21,8 @@ const places_controller_1 = require("./places/places.controller");
 const prisma_service_1 = require("./prisma/prisma.service");
 const jwt_1 = require("@nestjs/jwt");
 const order_controller_1 = require("./order/order.controller");
+const serve_static_1 = require("@nestjs/serve-static");
+const path_1 = require("path");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
@@ -40,6 +42,9 @@ exports.AppModule = AppModule = __decorate([
             item_module_1.ItemModule,
             menu_module_1.MenuModule,
             order_module_1.OrderModule,
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: (0, path_1.join)(__dirname, '../../..', 'client', 'dist'),
+            }),
         ],
         providers: [jwt_1.JwtService, prisma_service_1.PrismaService],
     })

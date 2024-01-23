@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams, useNavigate } from "react-router-dom";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
@@ -43,7 +44,7 @@ const MenuSettings = () => {
 
   const onUpdatePlace = async () => {
     setLoading(true);
-    const json = await updatePlace({
+    const json:any = await updatePlace({
       id: place!.id,
       data: { font, color },
       token: auth.token,

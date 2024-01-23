@@ -3,11 +3,12 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { AuthContextType } from "../types";
 
 
 const MainLayout = function ({ children }){
   const navigateTo = useNavigate();
-  const auth= useContext(AuthContext);
+  const auth= useContext(AuthContext) as AuthContextType;
 
   const onSignIn = () => {
     navigateTo('/login', { replace: true });

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useRef, useState } from "react"
 import AuthContext from "../context/AuthContext";
 import { addCategory, addMenuItem, updateMenuItem } from "../api";
@@ -26,7 +27,7 @@ const MenuItemForm = ({ place, onDone, item}:{place:PlaceType,onDone:()=>void,it
     const auth = useContext(AuthContext) as AuthContextType;
 
     const onAddCategory = async () => {
-        const json  = await addCategory({data:{name: categoryName},id:place.id, token:auth.token});
+        const json:any  = await addCategory({data:{name: categoryName},id:place.id, token:auth.token});
         if(json){
             toast(`Category ${categoryName} was created`,{type:'success'})
             setCategory(json.id);
@@ -52,7 +53,7 @@ const MenuItemForm = ({ place, onDone, item}:{place:PlaceType,onDone:()=>void,it
 
     }
     const onUpdateMenuItem = async () => {
-        const json = await updateMenuItem({
+        const json:any = await updateMenuItem({
             
             id:item!.id,
           data: {

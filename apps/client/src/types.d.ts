@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 type Login ={
     username: string;
@@ -21,9 +22,9 @@ type ItemType =
 type AuthContextType={
         token:string,
         loading:boolean,
-        signIn:()=>void,
+        signIn: (params: any, callback: () => void) => void,
         signOut:()=>void,
-        register:()=>void
+        register:(params: any, callback: () => void) => void,
 }
 
 type PlaceType= {

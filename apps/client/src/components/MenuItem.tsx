@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Col } from "react-bootstrap"
 import styled from "styled-components"
 import { AiFillEdit, AiOutlineDelete } from "react-icons/ai"
-import { ItemType } from "../types"
+import { ShoppingCartValueType } from "../types"
 
 type StyledComponentProps = {
   active:boolean | string
@@ -27,7 +28,7 @@ const Container = styled.div<StyledComponentProps>`
     }
 `
 
-const MenuItem = ({ item, onEdit, onRemove, onOrder, color}:{item:ItemType, onEdit?:()=>void, onRemove?:()=>void, onOrder:( itm:ItemType ) => void, color?:string}) =>{
+const MenuItem = ({ item, onEdit, onRemove, onOrder, color}:{item:any, onEdit?:()=>void, onRemove?:()=>void, onOrder?:( itm:ShoppingCartValueType ) => void, color?:string}) =>{
   return (<Container active={item.isAvailable.toString()}>
     <Col xs={5} style={{ backgroundImage: `url(${item.image})`}} />
     <Col xs={7} className="d-flex flex-column justify-content-between w-100">

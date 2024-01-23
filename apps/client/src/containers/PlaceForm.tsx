@@ -3,13 +3,14 @@ import { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { addPlace } from '../api';
 import ImageDropzone from './ImageDropzone';
+import { AuthContextType } from '../types';
 
 
 const PlaceForm = ({ onDone })=>{
     const [name, setName]= useState("");
     const [image, setImage]= useState("");
 
-    const auth = useContext(AuthContext);
+    const auth = useContext(AuthContext) as AuthContextType;
 
     const onClick = async ()=>{
         const json = await addPlace({ token:auth.token, data:{name,image}})

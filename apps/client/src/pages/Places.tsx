@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState } from "react";
 import MainLayout from "../layouts/MainLayout";
 import styled from 'styled-components'
@@ -63,7 +64,7 @@ const Places = () => {
     },[])
 
     const onFetchPlaces = async () => {
-        const json = await fetchPlaces(auth.token);
+        const json:any = await fetchPlaces(auth.token);
         if(json){
             setPlaces(json)
 
