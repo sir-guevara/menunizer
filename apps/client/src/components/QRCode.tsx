@@ -1,6 +1,6 @@
 import { AiOutlineLink } from "react-icons/ai";
 import { Button } from "react-bootstrap";
-import QRCodeReact from "qrcode.react";
+import {QRCodeSVG}  from "qrcode.react";
 import { useRef } from "react";
 import styled from "styled-components";
 import { useReactToPrint } from "react-to-print";
@@ -36,17 +36,32 @@ const ComponentToPrint = styled.div`
   }
 `;
 
-const QRCode = ({ table, placeId }) => {
+const QRCode = ({ table, place }) => {
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
-  const url = `${window.location.origin}/menu/${placeId}/${table}`;
+  const url = `${window.location.origin}/menu/${place.id}/${table}`;
 
   return (
     <Container>
-      <QRCodeReact value={url} size={200} />
+      <QRCodeSVG
+            value={url}
+            size={200}
+            bgColor={"#ffffff"}
+            fgColor={"#000000"}
+            level={"L"}
+            includeMargin={false}
+            imageSettings={{
+              src: `${place.image}`,
+              x: undefined,
+              y: undefined,
+              height: 54,
+              width: 54,
+              excavate: true,
+            }}
+          />
       <Overlay>
         <div className="d-flex">
           <Button variant="primary" onClick={handlePrint} className="m-2">
@@ -54,7 +69,7 @@ const QRCode = ({ table, placeId }) => {
           </Button>
           <Button
             variant="primary"
-            href={`/menu/${placeId}/${table}`}
+            href={`/menu/${place.id}/${table}`}
             target="_blank"
             className="m-2"
           >
@@ -67,10 +82,10 @@ const QRCode = ({ table, placeId }) => {
         <ComponentToPrint
           ref={componentRef}
           style={{
-            backgroundImage: `url("https://i.pinimg.com/originals/fa/61/07/fa610763f8007b711ec710aef08b0e15.jpg")`,
-
+            background: "#fff",
             backgroundRepeat: "no-repeat",
             position: "fixed",
+            fontFamily:`${place.font}`,
             top: "0",
             left: "0",
             width: "100%",
@@ -78,8 +93,25 @@ const QRCode = ({ table, placeId }) => {
           }}
         >
           <h1>Table {table}</h1>
-          <h2>Scan for menu</h2>
-          <QRCodeReact value={url} size={500} />
+          <h2 style={{
+            color:`${place.color}`
+          }}>Scan for menu</h2>
+          <QRCodeSVG
+            value={url}
+            size={500}
+            bgColor={"#ffffff"}
+            fgColor={"#000000"}
+            level={"L"}
+            includeMargin={true}
+            imageSettings={{
+              src: `${place.image}`,
+              x: undefined,
+              y: undefined,
+              height: 104,
+              width: 104,
+              excavate: true,
+            }}
+          />
         </ComponentToPrint>
       </div>
     </Container>

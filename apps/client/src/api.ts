@@ -33,7 +33,11 @@ async function request(path: string, { data, token, method = "GET" }: { data?: u
     }
 
     // Handle all other errors
-    const errorMessage = JSON.parse(error.message).message || 'An unexpected error occurred.';
+    let emsg=null;
+    if(error?.messag){
+      emsg = JSON.parse(error?.message)?.message;
+    }
+    const errorMessage = emsg || 'An unexpected error occurred.';
     toast(errorMessage, { type: "error" });
 
   }

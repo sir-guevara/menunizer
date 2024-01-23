@@ -16,10 +16,10 @@ const Login  = () =>{
             navigateTo('/places', { replace: true });
         }
     })
-    const demoLogin = async ()=>{
+    const demoLogin = () =>{
         auth.signIn({username:'alex@ruheni.com',password:'password-alex'},()=> navigateTo('/places'));
     }
-    const onClick = async () =>{
+    const onClick = () =>{
         auth.signIn({username,password},()=> navigateTo('/places'));
     }
     return (
@@ -59,8 +59,10 @@ const Login  = () =>{
                                 Don't have an account?
                                 <Link className="underline text-primary" to="/register">{" "}
                                 Sign up
-                                </Link>
+                                </Link> {"  "}
+                                <Button className="btn-sm" variant="secondary" onClick={demoLogin}>Demo Login</Button>
                             </p>
+                            
                             </div>
                         </Card.Body>
                     </Card>

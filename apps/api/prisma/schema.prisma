@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @unique @default(cuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  places    Place[]
+}
+
+model Place {
+  id             String     @id @unique @default(cuid())
+  name           String
+  ownerId        String
+  image          String
+  numberOfTables Int        @default(1)
+  owner          User       @relation(fields: [ownerId], references: [id])
+  categories     Category[]
+  orders          Order[]       
+  font            String?  @default("Helvetica")
+  color           String?   @default("black")
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model Category {
+  id      String     @id @unique @default(cuid())
+  name    String
+  place   Place      @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  placeId String
+  items   MenuItem[]
+}
+
+model MenuItem {
+  id          String   @id @unique @default(cuid()) 
+  name        String
+  image       String // Assuming image is a URL or file path
+  price       Float @default(0.0)
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId  String
+  description String?
+  isAvailable Boolean @default(false)
+}
+
+
+model Order {
+  id             Int        @id @unique @default(autoincrement())
+  place          Place      @relation(fields: [placeId], references: [id])
+  placeId        String
+  table          Int
+  detail         String
+  paymentIntent  String
+  amount         Float
+  status         String     @default("processing")
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}

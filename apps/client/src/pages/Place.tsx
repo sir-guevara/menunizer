@@ -114,13 +114,18 @@ const Place = () => {
             </div>
 
             <Button variant="link" onClick={showQRModal}>
-              <AiOutlineQrcode size={25} />
+              <AiOutlineQrcode size={25} />{" "}
+              Tables
             </Button>
+            |
             <Button variant="link" href={`/places/${params!.id}/orders`}>
-              <RiFileList3Line size={25} />
+              <RiFileList3Line size={25} />{" "}
+              Orders
             </Button>
+            |
             <Button variant="link" href={`/places/${params.id}/settings`}>
-              <FiSettings size={25} />
+              <FiSettings size={25} />{" "}
+              Settings
             </Button>
           </div>
         </Col>

@@ -33,7 +33,7 @@ const QRCodeModal = ({ show, onHide, place, onUpdatePlace }:{show:boolean, onHid
           {Array.from({ length: place?.numberOfTables }, (_, i) => i + 1).map(
             (table) => (
               <Col key={table} lg={4} md={6} className="mb-4">
-                <QRCode table={table} placeId={place.id} />
+                <QRCode table={table} place={place}/>
               </Col>
             )
           )}

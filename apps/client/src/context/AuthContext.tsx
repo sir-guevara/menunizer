@@ -18,7 +18,6 @@ export function AuthProvider({ children }) {
     callback=()=>"" ): Promise<void>=>{
         setLoading(true);
         const response = await singInApi({username,password}) as SignInResponse;
-
         if(response && response.accessToken){
             localStorage.setItem("token",response.accessToken);
             setToken(response.accessToken);
@@ -37,7 +36,6 @@ export function AuthProvider({ children }) {
         setLoading(true);
         const response:any = await registerApi({username,password});
         if(response && response.id){
-            console.log("response  :  ",response);
             callback()
         }
         setLoading(false);
