@@ -8,7 +8,7 @@ const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
   const placeId = param.id;
   
   const totalPrice = useMemo(
-    () => items.map((i) =>parseFloat( `${(i.quantity * i.price).toFixed(2)}`)).reduce((a, b) => a + b, 0),
+    () => items.map((i) => i.quantity * i.price ).reduce((a, b) => parseFloat(`${(a + b).toFixed(2)}`), 0),
     [items]
   );
 
@@ -29,7 +29,7 @@ const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
               </div>
 
               <div className="d-flex align-items-center">
-                <OperationButton
+                <OperationButton className="opbnt"
                   variant="lightgray"
                   size="sm"
                   onClick={() => onRemove(item)}
@@ -37,7 +37,7 @@ const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
                   -
                 </OperationButton>
                 <span>{item.quantity}</span>
-                <OperationButton
+                <OperationButton className="opbnt"
                   variant="lightgray"
                   size="sm"
                   onClick={() => onAdd(item)}

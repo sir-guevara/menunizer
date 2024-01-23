@@ -130,3 +130,11 @@ p { font-size: 14px;}
     text-decoration: none;
     color: #ED6F3B;
 }
+
+.opbnt:active{
+    color: #32325d;
+}
+
+.opbnt:hover{
+    color: #80bdff;
+}
