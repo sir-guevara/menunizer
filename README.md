@@ -1,5 +1,5 @@
 ![Screenshot 1](/apps/client/public/logo.png)
-# Menunizer - QR Code Menu App
+# [Menunizer - QR Code Menu App](https://menunizer.linkr.pro)
 
 Menunizer is a user-friendly QR Code menu app designed for restaurants and businesses to effortlessly create, manage, and share digital menus using QR codes.
 
